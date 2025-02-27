@@ -17,7 +17,6 @@
     {
       "name": "Frontend: Full Stack",
       "type": "node-terminal",
-
       "request": "launch",
       "command": "yarn dev",
       "cwd": "${workspaceFolder}/autogpt_platform/frontend",
@@ -32,9 +31,6 @@
       "type": "debugpy",
       "request": "launch",
       "module": "backend.app",
-      // "env": {
-      //   "ENV": "dev"
-      // },
       "envFile": "${workspaceFolder}/backend/.env",
       "justMyCode": false,
       "cwd": "${workspaceFolder}/autogpt_platform/backend"
@@ -50,13 +46,23 @@
       "envFile": "${workspaceFolder}/market/.env",
       "justMyCode": false,
       "cwd": "${workspaceFolder}/market"
+    },
+    {
+      "name": "Infrastructure",
+      "type": "node-terminal",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/infra",
+      "command": "docker-compose up", // Added support for infra debugging with Docker
+      "presentation": {
+        "group": "infra",
+        "order": 1
+      }
     }
   ],
   "compounds": [
     {
       "name": "Everything",
-      "configurations": ["Backend", "Frontend: Full Stack"],
-      // "preLaunchTask": "${defaultBuildTask}",
+      "configurations": ["Backend", "Frontend: Full Stack", "Infrastructure"], // Added infra debugging
       "stopAll": true,
       "presentation": {
         "hidden": false,
